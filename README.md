@@ -22,35 +22,36 @@
 
 ### 📁 GitHub Repository Structure
 
+```markdown
 MediCure/
-├── Frontend/                              # Frontend chatbot interface
+├── Frontend/                         # Frontend chatbot interface
 │   ├── app.js
 │   ├── index.html
 │   └── style.css
 ├── Backend/
 │   ├── Agents/
-│   │   ├── ExtractMedicalReport/          # Agent extracts clinical insights from uploaded reports
+│   │   ├── ExtractMedicalReport/     # Agent extracts clinical insights from uploaded reports
 │   │   │   ├── Agent_Instruction.txt
 │   │   │   └── README.md
-│   │   ├── MedicalAssignment/             # Agent for specialist matching and slot availability
+│   │   ├── MedicalAssignment/        # Agent for specialist matching and slot availability
 │   │   │   ├── Agent_Instruction.txt
 │   │   │   └── README.md
-│   │   ├── Multi_Collaborator/            # Multi-agent routing config
+│   │   ├── Multi_Collaborator/       # Multi-agent routing config
 │   │   │   ├── Agent_Instruction.txt
 │   │   │   └── README.md
-│   │   ├── QNA_Agent/                     # QnA agent for handling FAQs
+│   │   ├── QNA_Agent/                # QnA agent for handling FAQs
 │   │   │   ├── Agent_Instruction.txt
 │   │   │   ├── kb_entries.json
 │   │   │   ├── KB_permissions.json
 │   │   │   └── README.md
-│   │   └── Agent_permissions.json         # IAM permissions for each agent
+│   │   └── Agent_permissions.json    # IAM permissions for each agent
 │   ├── Lambda_functions/
-│   │   ├── doctor_assign.py               # Backend logic for for specialist matching and slot availability
-│   │   ├── extractor_backend.py           # Returns structured content extracted from uploaded pdf file
-│   │   ├── extractor_fe.py                # Invokes a Bedrock agent to extract clinical insights
-│   │   ├── sendEmail.py                   # Sends confirmation email to user
-│   │   ├── uploadToS3.py                  # Handles file uploads and triggers extraction 
-│   │   └── Policies/                      # IAM permissions and resource based policies w.r.t lambda functions
+│   │   ├── doctor_assign.py          # Backend logic for specialist matching and slot availability
+│   │   ├── extractor_backend.py      # Returns structured content extracted from uploaded PDF file
+│   │   ├── extractor_fe.py           # Invokes a Bedrock agent to extract clinical insights
+│   │   ├── sendEmail.py              # Sends confirmation email to user
+│   │   ├── uploadToS3.py             # Handles file uploads and triggers extraction
+│   │   └── Policies/                 # IAM permissions and resource-based policies for Lambda functions
 │   │       ├── doctor_assign_lambda_policy.json
 │   │       ├── doctor_assign_Resource_based_policy.json
 │   │       ├── extractor_backend_lambda_policy.json
@@ -60,11 +61,12 @@ MediCure/
 │   │       ├── sendEmail_lambda_policy.json
 │   │       └── uploadToS3_lambda_policy.json
 ├── DynamoDB/
-│   ├── medical_summary_schema.json # DynamoDB table schema for upserting medical summary
-│   └── doctor_schedules_schema.json # DynamoDB table schema for retrieving doctor slot details
-|   └── doctors_details_schema.json # DynamoDB table schema for fetching doctor details by location and specialty
-├── README.md 
-├── MediCure_Architecture.png
+│   ├── medical_summary_schema.json  # DynamoDB table schema for upserting medical summary
+│   ├── doctor_schedules_schema.json # DynamoDB table schema for retrieving doctor slot details
+│   └── doctors_details_schema.json  # DynamoDB table schema for fetching doctor details by location and specialty
+├── README.md
+├── MediCure_Architecture.png        # Architecture diagram
+```
 
 ## 🛠 Technologies Used
 
@@ -85,7 +87,7 @@ MediCure/
 
 ## 📦 Lambda Functions
 
-### 🧬 `uploadToS3.py`
+### `uploadToS3.py`
 
 This Lambda function is exposed via a **Function URL** and is triggered directly from the UI when a user uploads a medical report (PDF). It performs the following tasks:
 
@@ -98,7 +100,7 @@ This Lambda function is exposed via a **Function URL** and is triggered directly
 - `UPLOAD_BUCKET` → S3 bucket name (e.g., `user-data-agent`)
 - `EXTRACTOR_LAMBDA` → Name of the extractor Lambda (e.g., `extractor_fe`)
 
-### 🧠 `extractor_fe.py`
+### `extractor_fe.py`
 
 This Lambda function is triggered after a user uploads a medical report. It invokes a **Bedrock agent** to extract clinical insights from the document and stores the results in **DynamoDB** for later use in confirmation emails and session tracking.
 
@@ -128,7 +130,7 @@ This Lambda function is triggered after a user uploads a medical report. It invo
 
 ---
 
-#### 🧪 Sample DynamoDB Record
+#### Sample DynamoDB Record
 
 ```json
 {
@@ -140,7 +142,7 @@ This Lambda function is triggered after a user uploads a medical report. It invo
   "last_updated": "2025-10-18T10:15:00Z"
 }
 
-### 🧪 `extractor_backend.py`
+### `extractor_backend.py`
 
 This Lambda function is invoked by the **Bedrock agent** `ExtractMedicalReport` via the action group `extractor_fetch`. It retrieves uploaded PDF files from S3, extracts text using PyMuPDF (`fitz`), and returns the structured content back to the agent for further processing.
 

@@ -358,8 +358,8 @@ def book_appointment_slot(doctor_id: str, selected_slot: str, doctor_name: Optio
         email_sent = False
         email_sent = send_confirmation_email(
             unique_id=unique_id,                            
-            user_name=user_name or "sai",  # Default fallback values
-            user_email=user_email or "sai.srujani.devineni@accenture.com",
+            user_name=user_name or "ABC",  # Default fallback values
+            user_email=user_email or "test@gmail.com",
             symptoms_summary=symptoms_summary or "General consultation",
             specialist_type=specialist_type or "General",    
             doctor_name=doctor_name or doctor_id,
