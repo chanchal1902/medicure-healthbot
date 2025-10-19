@@ -141,6 +141,8 @@ This Lambda function is triggered after a user uploads a medical report. It invo
   "created_date": "2025-10-18T10:15:00Z",
   "last_updated": "2025-10-18T10:15:00Z"
 }
+```
+---
 
 ### `extractor_backend.py`
 
@@ -185,7 +187,7 @@ This Lambda function is invoked by the **Bedrock agent** `ExtractMedicalReport` 
   },
   "messageVersion": 1
 }
-
+```
 ### 🩺 `doctor_assign` Lambda
 
 This Lambda function is triggered by the **Medical Assignment Agent** whenever a user interacts with the bot to share symptoms or request specialist matching. It handles the core logic for **doctor discovery**, **timeslot availability**, and **appointment booking**.
@@ -247,7 +249,8 @@ This Lambda function is triggered by the **Medical Assignment Agent** whenever a
     "symptoms_summary": "Patient reported: persistent cough and mild chest discomfort"
   }
 }
-
+```
+---
 ### 📧 `sendemail.py`
 
 This Lambda function is responsible for sending a **confirmation email** to the patient after a successful appointment booking. It compiles appointment details and extracted medical report insights into a structured HTML email and sends it using **Amazon SES**.
@@ -285,7 +288,7 @@ Report Insights       Evidence of mild bronchial inflammation; no signs of infec
 
 Thank you,  
 Healthcare Support Team
-
+```
 ---
 
 #### ⚙️ Environment Variables Required
