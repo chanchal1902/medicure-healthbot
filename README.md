@@ -454,6 +454,7 @@ Please refer MediCure\Backend\Agents\QNA_Agent\kb_entries.json
   - Select hosting type as "Host a static website"
   - Specify Index document as "index.html"
   - Setup bucket policy :
+    ```json
     {
       "Version": "2012-10-17",
       "Statement": [
@@ -466,6 +467,7 @@ Please refer MediCure\Backend\Agents\QNA_Agent\kb_entries.json
           }
       ]
     }
+    ```
   - Once the S3 bucket is configured for static website hosting, the website endpoint will be available under the **Properties** tab.
   - You can use this endpoint to access the deployed web application.
 
