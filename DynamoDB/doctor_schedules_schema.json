@@ -1,0 +1,41 @@
+{
+    "Table": {
+        "AttributeDefinitions": [
+            {
+                "AttributeName": "schedule_id",
+                "AttributeType": "S"
+            }
+        ],
+        "TableName": "doctor_schedules",
+        "KeySchema": [
+            {
+                "AttributeName": "schedule_id",
+                "KeyType": "HASH"
+            }
+        ],
+        "TableStatus": "ACTIVE",
+        "CreationDateTime": "2025-10-16T07:52:18.328000+00:00",
+        "ProvisionedThroughput": {
+            "NumberOfDecreasesToday": 0,
+            "ReadCapacityUnits": 0,
+            "WriteCapacityUnits": 0
+        },
+        "TableSizeBytes": 12110,
+        "ItemCount": 95,
+        "TableArn": "arn:aws:dynamodb:us-east-1:254305339601:table/doctor_schedules",
+        "TableId": "1c4828f2-4baf-4922-84f5-5a316c69759e",
+        "BillingModeSummary": {
+            "BillingMode": "PAY_PER_REQUEST",
+            "LastUpdateToPayPerRequestDateTime": "2025-10-16T07:52:18.328000+00:00"
+        },
+        "TableClassSummary": {
+            "TableClass": "STANDARD"
+        },
+        "DeletionProtectionEnabled": false,
+        "WarmThroughput": {
+            "ReadUnitsPerSecond": 12000,
+            "WriteUnitsPerSecond": 4000,
+            "Status": "ACTIVE"
+        }
+    }
+}

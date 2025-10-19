@@ -1,0 +1,16 @@
+{
+    "TableName": "medical_summary",
+    "KeySchema": [
+        {
+            "AttributeName": "submission_id",
+            "KeyType": "HASH"
+        }
+    ],
+    "AttributeDefinitions": [
+        {
+            "AttributeName": "submission_id",
+            "AttributeType": "S"
+        }
+    ],
+    "GlobalSecondaryIndexes": null
+}

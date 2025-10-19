@@ -1,0 +1,285 @@
+[
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "AmazonLexFullAccessStatement9",
+        "Effect": "Allow",
+        "Action": [
+          "iam:CreateServiceLinkedRole",
+          "iam:DeleteServiceLinkedRole",
+          "iam:GetServiceLinkedRoleDeletionStatus"
+        ],
+        "Resource": [
+          "arn:aws:iam::*:role/aws-service-role/lex.amazonaws.com/AWSServiceRoleForLexBots",
+          "arn:aws:iam::*:role/aws-service-role/channels.lex.amazonaws.com/AWSServiceRoleForLexChannels",
+          "arn:aws:iam::*:role/aws-service-role/lexv2.amazonaws.com/AWSServiceRoleForLexV2Bots*",
+          "arn:aws:iam::*:role/aws-service-role/channels.lexv2.amazonaws.com/AWSServiceRoleForLexV2Channels*",
+          "arn:aws:iam::*:role/aws-service-role/replication.lexv2.amazonaws.com/AWSServiceRoleForLexV2Replication*"
+        ]
+      },
+      {
+        "Sid": "AmazonLexFullAccessStatement10",
+        "Effect": "Allow",
+        "Action": [
+          "iam:PassRole"
+        ],
+        "Resource": [
+          "arn:aws:iam::*:role/aws-service-role/lex.amazonaws.com/AWSServiceRoleForLexBots"
+        ],
+        "Condition": {
+          "StringEquals": {
+            "iam:PassedToService": [
+              "lex.amazonaws.com"
+            ]
+          }
+        }
+      },
+      {
+        "Sid": "AmazonLexFullAccessStatement11",
+        "Effect": "Allow",
+        "Action": [
+          "iam:PassRole"
+        ],
+        "Resource": [
+          "arn:aws:iam::*:role/aws-service-role/lexv2.amazonaws.com/AWSServiceRoleForLexV2Bots*"
+        ],
+        "Condition": {
+          "StringEquals": {
+            "iam:PassedToService": [
+              "lexv2.amazonaws.com"
+            ]
+          }
+        }
+      },
+      {
+        "Sid": "AmazonLexFullAccessStatement12",
+        "Effect": "Allow",
+        "Action": [
+          "iam:PassRole"
+        ],
+        "Resource": [
+          "arn:aws:iam::*:role/aws-service-role/channels.lexv2.amazonaws.com/AWSServiceRoleForLexV2Channels*"
+        ],
+        "Condition": {
+          "StringEquals": {
+            "iam:PassedToService": [
+              "channels.lexv2.amazonaws.com"
+            ]
+          }
+        }
+      },
+      {
+        "Sid": "AmazonLexFullAccessStatement13",
+        "Effect": "Allow",
+        "Action": [
+          "iam:PassRole"
+        ],
+        "Resource": [
+          "arn:aws:iam::*:role/aws-service-role/replication.lexv2.amazonaws.com/AWSServiceRoleForLexV2Replication*"
+        ],
+        "Condition": {
+          "StringEquals": {
+            "iam:PassedToService": [
+              "lexv2.amazonaws.com"
+            ]
+          }
+        }
+      }
+    ]
+  },
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "rds:*",
+          "application-autoscaling:DeleteScalingPolicy",
+          "application-autoscaling:DeregisterScalableTarget",
+          "application-autoscaling:DescribeScalableTargets",
+          "application-autoscaling:DescribeScalingActivities",
+          "application-autoscaling:DescribeScalingPolicies",
+          "application-autoscaling:PutScalingPolicy",
+          "application-autoscaling:RegisterScalableTarget",
+          "cloudwatch:DescribeAlarms",
+          "cloudwatch:GetMetricStatistics",
+          "cloudwatch:PutMetricAlarm",
+          "cloudwatch:DeleteAlarms",
+          "cloudwatch:ListMetrics",
+          "cloudwatch:GetMetricData",
+          "ec2:DescribeAccountAttributes",
+          "ec2:DescribeAvailabilityZones",
+          "ec2:DescribeCoipPools",
+          "ec2:DescribeInternetGateways",
+          "ec2:DescribeLocalGatewayRouteTablePermissions",
+          "ec2:DescribeLocalGatewayRouteTables",
+          "ec2:DescribeLocalGatewayRouteTableVpcAssociations",
+          "ec2:DescribeLocalGateways",
+          "ec2:DescribeSecurityGroups",
+          "ec2:DescribeSubnets",
+          "ec2:DescribeVpcAttribute",
+          "ec2:DescribeVpcs",
+          "ec2:GetCoipPoolUsage",
+          "sns:ListSubscriptions",
+          "sns:ListTopics",
+          "sns:Publish",
+          "logs:DescribeLogStreams",
+          "logs:GetLogEvents",
+          "outposts:GetOutpostInstanceTypes",
+          "devops-guru:GetResourceCollection"
+        ],
+        "Resource": "*"
+      },
+      {
+        "Effect": "Allow",
+        "Action": "pi:*",
+        "Resource": [
+          "arn:aws:pi:*:*:metrics/rds/*",
+          "arn:aws:pi:*:*:perf-reports/rds/*"
+        ]
+      },
+      {
+        "Effect": "Allow",
+        "Action": "iam:CreateServiceLinkedRole",
+        "Resource": "*",
+        "Condition": {
+          "StringLike": {
+            "iam:AWSServiceName": [
+              "rds.amazonaws.com",
+              "rds.application-autoscaling.amazonaws.com"
+            ]
+          }
+        }
+      },
+      {
+        "Action": [
+          "devops-guru:SearchInsights",
+          "devops-guru:ListAnomaliesForInsight"
+        ],
+        "Effect": "Allow",
+        "Resource": "*",
+        "Condition": {
+          "ForAllValues:StringEquals": {
+            "devops-guru:ServiceNames": [
+              "RDS"
+            ]
+          },
+          "Null": {
+            "devops-guru:ServiceNames": "false"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": [
+          "s3:*",
+          "s3-object-lambda:*"
+        ],
+        "Resource": "*"
+      }
+    ]
+  },
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Action": "logs:CreateLogGroup",
+        "Effect": "Allow",
+        "Resource": "*"
+      },
+      {
+        "Action": [
+          "logs:CreateLogStream",
+          "logs:PutLogEvents",
+          "rds-data:ExecuteStatement",
+          "secretsmanager:GetSecretValue"
+        ],
+        "Effect": "Allow",
+        "Resource": [
+          "*"
+        ]
+      }
+    ]
+  },
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Action": "lambda:InvokeFunction",
+        "Resource": "arn:aws:lambda:us-east-1:254305339601:function:sendEmail"
+      }
+    ]
+  },
+  {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "BasePermissions",
+        "Effect": "Allow",
+        "Action": [
+          "secretsmanager:*",
+          "cloudformation:CreateChangeSet",
+          "cloudformation:DescribeChangeSet",
+          "cloudformation:DescribeStackResource",
+          "cloudformation:DescribeStacks",
+          "cloudformation:ExecuteChangeSet",
+          "docdb-elastic:GetCluster",
+          "docdb-elastic:ListClusters",
+          "ec2:DescribeSecurityGroups",
+          "ec2:DescribeSubnets",
+          "ec2:DescribeVpcs",
+          "kms:DescribeKey",
+          "kms:ListAliases",
+          "kms:ListKeys",
+          "lambda:ListFunctions",
+          "rds:DescribeDBClusters",
+          "rds:DescribeDBInstances",
+          "redshift:DescribeClusters",
+          "redshift-serverless:ListWorkgroups",
+          "redshift-serverless:GetNamespace",
+          "tag:GetResources"
+        ],
+        "Resource": "*"
+      },
+      {
+        "Sid": "LambdaPermissions",
+        "Effect": "Allow",
+        "Action": [
+          "lambda:AddPermission",
+          "lambda:CreateFunction",
+          "lambda:GetFunction",
+          "lambda:InvokeFunction",
+          "lambda:UpdateFunctionConfiguration"
+        ],
+        "Resource": "arn:aws:lambda:*:*:function:SecretsManager*"
+      },
+      {
+        "Sid": "SARPermissions",
+        "Effect": "Allow",
+        "Action": [
+          "serverlessrepo:CreateCloudFormationChangeSet",
+          "serverlessrepo:GetApplication"
+        ],
+        "Resource": "arn:aws:serverlessrepo:*:*:applications/SecretsManager*"
+      },
+      {
+        "Sid": "S3Permissions",
+        "Effect": "Allow",
+        "Action": [
+          "s3:GetObject"
+        ],
+        "Resource": [
+          "arn:aws:s3:::awsserverlessrepo-changesets*",
+          "arn:aws:s3:::secrets-manager-rotation-apps-*/*"
+        ]
+      }
+    ]
+  }
+]

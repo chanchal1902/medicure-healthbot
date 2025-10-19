@@ -1,0 +1,60 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "BedrockInvokeModelStatement",
+      "Effect": "Allow",
+      "Action": [
+        "bedrock:InvokeModel"
+      ],
+      "Resource": [
+        "arn:aws:bedrock:us-east-1::foundation-model/amazon.titan-embed-text-v2:0"
+      ]
+    },
+    {
+      "Sid": "OpenSearchServerlessAPIAccessAllStatement",
+      "Effect": "Allow",
+      "Action": [
+        "aoss:APIAccessAll"
+      ],
+      "Resource": [
+        "arn:aws:aoss:us-east-1:254305339601:collection/jkxk5bnj9rfgsb0idy96"
+      ]
+    },
+    {
+      "Sid": "S3ListBucketStatement",
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket"
+      ],
+      "Resource": [
+        "arn:aws:s3:::user-data-agent"
+      ],
+      "Condition": {
+        "StringEquals": {
+          "aws:ResourceAccount": [
+            "254305339601"
+          ]
+        }
+      }
+    },
+    {
+      "Sid": "S3GetObjectStatement",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::user-data-agent/KB/kb_entries.json",
+        "arn:aws:s3:::user-data-agent/KB/kb_entries.json.metadata.json"
+      ],
+      "Condition": {
+        "StringEquals": {
+          "aws:ResourceAccount": [
+            "254305339601"
+          ]
+        }
+      }
+    }
+  ]
+}

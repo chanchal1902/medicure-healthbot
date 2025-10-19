@@ -1,0 +1,20 @@
+{
+  "Version": "2012-10-17",
+  "Id": "default",
+  "Statement": [
+    {
+      "Sid": "AllowBedrockInvoke",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "bedrock.amazonaws.com"
+      },
+      "Action": "lambda:InvokeFunction",
+      "Resource": "arn:aws:lambda:us-east-1:254305339601:function:extractor_backend",
+      "Condition": {
+        "ArnLike": {
+          "AWS:SourceArn": "arn:aws:bedrock:us-east-1:254305339601:agent/FDB7SXFQZR"
+        }
+      }
+    }
+  ]
+}

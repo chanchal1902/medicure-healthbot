@@ -1,0 +1,265 @@
+[
+  {
+    "id": "KB001",
+    "category": "process_info",
+    "title": "Overall Process Flow",
+    "content": "Our system helps users submit documents for analysis and routing. The main stages are: 1. Conversation via Lex – collect details or symptoms from the user. 2. File Upload – user uploads the required file or document. 3. Extraction – system extracts key data fields from the document. 4. Assignment – extracted data is routed to the right queue or specialist agent. Users can track progress via chat. File uploads are stored securely in S3.",
+    "keywords": ["process","workflow","document processing","lex","file upload"],
+    "created_at": "2025-10-17",
+    "priority": "normal"
+  },
+  {
+    "id": "KB002",
+    "category": "upload_rules",
+    "title": "File Upload Rules",
+    "content": "You can upload PDF files (PNG) up to 6 MB. Each uploaded file triggers a background process that extracts and validates its contents. If a file fails to upload, try again or contact support with the file name and timestamp.",
+    "keywords": ["file upload","pdf","upload failed"],
+    "created_at": "2025-10-17",
+    "priority": "normal"
+  },
+  {
+    "id": "KB003",
+    "category": "extraction_rules",
+    "title": "Extraction Rules",
+    "content": "The extraction process identifies and structures key information such as: Document Type, Submission Date, Name or ID fields, Location or Department information, Coverage or Category details. If any of these fields are missing or unclear, the extractor will flag them for review.",
+    "keywords": ["extraction","document fields","data validation","missing fields"],
+    "created_at": "2025-10-17",
+    "priority": "high"
+  },
+  {
+    "id": "KB004",
+    "category": "assignment_rules",
+    "title": "Assignment Rules",
+    "content": "Assignments are based on symptoms shared, document type and extracted information. - If the document type is 'Medical Report', route to Medical Analysis Agent. - If it contains 'Billing' or 'Payment' keywords, route to Finance Agent. - If it is a 'Support Request', route to Support Queue. If routing fails, assign to Default Review Queue.",
+    "keywords": ["routing","assignment","queue","task allocation","rules"],
+    "created_at": "2025-10-17",
+    "priority": "high"
+  },
+  {
+    "id": "KB005",
+    "category": "validation",
+    "title": "Validation Guidelines",
+    "content": "Validation ensures required fields are present before routing. - Missing identifiers (e.g., symptoms or location) trigger a user prompt. - required or mandatory fields are 'Symptoms', 'Patient current location' - Files without extractable text are flagged for manual review.",
+    "keywords": ["validation","required fields","date format","review"],
+    "created_at": "2025-10-17",
+    "priority": "high"
+  },
+  {
+    "id": "KB006",
+    "category": "faqs",
+    "title": "FAQs",
+    "content": "Q: What happens after I upload a document? A: The system extracts key data and routes it automatically to the correct department or specialist. Q: How long does extraction take? A: Typically 10–20 seconds depending on document size. Q: What if extraction fails? A: The system will notify you and request re-upload or manual verification. Q: Can I upload multiple files? A: Yes, one file per message. Each triggers an independent extraction process.",
+    "keywords": ["faq","upload","extraction","routing"],
+    "created_at": "2025-10-17",
+    "priority": "normal"
+  },
+  {
+    "id": "KB007",
+    "category": "troubleshooting",
+    "title": "Troubleshooting Extraction",
+    "content": "If extraction fails repeatedly: 1. Check file type (PDF). 2. Ensure the file is not password protected or scanned in low quality. 3. Retry upload or use a different format. For assignment errors, contact the system administrator with the document ID.",
+    "keywords": ["troubleshooting","errors","extraction failed","routing issue"],
+    "created_at": "2025-10-17",
+    "priority": "normal"
+  },
+  {
+    "id": "KB008",
+    "category": "sentiment_rules",
+    "title": "Sentiment & Escalation",
+    "content": "If the user expresses frustration or urgency (e.g., 'urgent', 'immediately', 'not working'), the system should prioritize the case or notify a human agent. Escalation thresholds: any message containing 'urgent' or explicit negative sentiment + missing required fields => escalate.",
+    "keywords": ["sentiment","escalation","urgent","frustrated","priority"],
+    "created_at": "2025-10-17",
+    "priority": "high"
+  },
+  {
+    "id": "KB009",
+    "category": "doctor_directory",
+    "title": "Doctor Details and Specialties",
+    "content": [
+  {
+    "name": "Dr. Amitabh Roy",
+    "specialty": "Psychiatry",
+    "description": "Mental health consultation",
+    "experience": 12,
+    "location": "Delhi",
+    "hospital_name": "Harmony Mind Care Hospital",
+    "profile_summary": "Dr. Amitabh Roy is a senior psychiatrist at Harmony Mind Care Hospital, Delhi, specializing in mood and anxiety disorders. He has over 12 years of experience helping patients manage stress, depression, and emotional well-being."
+  },
+  {
+    "name": "Dr. Rohit Singh",
+    "specialty": "Allergy and Immunology",
+    "description": "Allergic reactions and immune system concerns",
+    "experience": 14,
+    "location": "Delhi",
+    "hospital_name": "ImmunoCare Medical Institute",
+    "profile_summary": "Dr. Rohit Singh is an allergy and immunology specialist with 14 years of experience diagnosing and managing complex allergic and autoimmune disorders."
+  },
+  {
+    "name": "Dr. Snehal Patil",
+    "specialty": "Pediatrics",
+    "description": "Child health issues",
+    "experience": 18,
+    "location": "Hyderabad",
+    "hospital_name": "Sunshine Children's Hospital",
+    "profile_summary": "Dr. Snehal Patil is a senior pediatrician with 18 years of experience providing preventive and curative healthcare for children and adolescents."
+  },
+  {
+    "name": "Dr. Sneha Ghosh",
+    "specialty": "Neurology",
+    "description": "Neurological symptoms",
+    "experience": 12,
+    "location": "Kolkata",
+    "hospital_name": "NeuroLife Specialty Center",
+    "profile_summary": "Dr. Sneha Ghosh specializes in treating neurological conditions such as migraines, seizures, and neuropathies, with 12 years of medical experience."
+  },
+  {
+    "name": "Dr. Neha Singh",
+    "specialty": "Pain Management",
+    "description": "Chronic or acute pain",
+    "experience": 20,
+    "location": "Delhi",
+    "hospital_name": "Capital Pain Relief Institute",
+    "profile_summary": "Dr. Neha Singh is an expert in pain management with 20 years of experience, focusing on non-surgical interventions and rehabilitation."
+  },
+  {
+    "name": "Dr. Nisha Verma",
+    "specialty": "Orthopedic",
+    "description": "Bone and joint issues",
+    "experience": 5,
+    "location": "Chennai",
+    "hospital_name": "OrthoPlus Hospital",
+    "profile_summary": "Dr. Nisha Verma is an orthopedic specialist with 5 years of experience in fracture management and joint care."
+  },
+  {
+    "name": "Dr. Sunita Verma",
+    "specialty": "Infectious Disease",
+    "description": "Infection-related concerns",
+    "experience": 20,
+    "location": "Delhi",
+    "hospital_name": "Metropolis Infectious Disease Centre",
+    "profile_summary": "Dr. Sunita Verma is a leading expert in infectious diseases, handling viral and bacterial infections with over 20 years of experience."
+  },
+  {
+    "name": "Dr. Anusha Reddy",
+    "specialty": "Gynecology",
+    "description": "Women’s health consultation",
+    "experience": 16,
+    "location": "Hyderabad",
+    "hospital_name": "Lotus Women's Health Hospital",
+    "profile_summary": "Dr. Anusha Reddy provides personalized gynecological and prenatal care with 16 years of clinical experience."
+  },
+  {
+    "name": "Dr. Alok Verma",
+    "specialty": "Urology",
+    "description": "Urinary or kidney concerns",
+    "experience": 17,
+    "location": "Delhi",
+    "hospital_name": "RenalCare Urology Centre",
+    "profile_summary": "Dr. Alok Verma is a senior urologist with 17 years of experience managing urinary tract and prostate conditions."
+  },
+  {
+    "name": "Dr. Swati Deshmukh",
+    "specialty": "Rheumatology",
+    "description": "Autoimmune and inflammatory conditions",
+    "experience": 14,
+    "location": "Mumbai",
+    "hospital_name": "Healing Hands Rheumatology Clinic",
+    "profile_summary": "Dr. Swati Deshmukh has 14 years of experience treating arthritis, lupus, and other autoimmune disorders."
+  },
+  {
+    "name": "Dr. Meera Joshi",
+    "specialty": "Oncology",
+    "description": "Cancer-related concerns",
+    "experience": 13,
+    "location": "Mumbai",
+    "hospital_name": "HopeCare Cancer Institute",
+    "profile_summary": "Dr. Meera Joshi is an oncologist with 13 years of experience providing chemotherapy and holistic cancer care."
+  },
+  {
+    "name": "Dr. Rahul Menon",
+    "specialty": "Orthopedics",
+    "description": "Musculoskeletal issues",
+    "experience": 14,
+    "location": "Chennai",
+    "hospital_name": "Chennai Bone & Joint Hospital",
+    "profile_summary": "Dr. Rahul Menon specializes in joint replacement and sports injury rehabilitation with 14 years of experience."
+  },
+  {
+    "name": "Dr. Manoj Gupta",
+    "specialty": "Plastic Surgery",
+    "description": "Cosmetic or reconstructive surgery consultation",
+    "experience": 14,
+    "location": "Bangalore",
+    "hospital_name": "Aesthetica Plastic Surgery Centre",
+    "profile_summary": "Dr. Manoj Gupta has 14 years of expertise in cosmetic and reconstructive surgeries with focus on natural outcomes."
+  },
+  {
+    "name": "Dr. Kiran Patel",
+    "specialty": "Nutrition & Dietetics",
+    "description": "Dietary guidance and nutritional issues",
+    "experience": 12,
+    "location": "Bangalore",
+    "hospital_name": "NutriWell Clinic",
+    "profile_summary": "Dr. Kiran Patel offers customized dietary consultations and weight management programs backed by 12 years of experience."
+  },
+  {
+    "name": "Dr. Vikram Singh",
+    "specialty": "Cardiology",
+    "description": "Heart-related symptoms",
+    "experience": 16,
+    "location": "Kolkata",
+    "hospital_name": "CardioLife Hospital",
+    "profile_summary": "Dr. Vikram Singh is a senior cardiologist with 16 years of experience treating cardiac disorders and hypertension."
+  },
+  {
+    "name": "Dr. Prakash Mehta",
+    "specialty": "Endocrinology",
+    "description": "Hormonal or metabolic issues",
+    "experience": 15,
+    "location": "Bangalore",
+    "hospital_name": "EndoWell Diabetes & Hormone Clinic",
+    "profile_summary": "Dr. Prakash Mehta has 15 years of experience managing diabetes, thyroid, and hormonal imbalances."
+  },
+  {
+    "name": "Dr. Pranav Kumar",
+    "specialty": "Hepatology",
+    "description": "Liver-related conditions",
+    "experience": 19,
+    "location": "Bangalore",
+    "hospital_name": "LiverCare Medical Centre",
+    "profile_summary": "Dr. Pranav Kumar specializes in managing chronic liver diseases and liver transplants with 19 years of clinical experience."
+  },
+  {
+    "name": "Dr. Anjali Menon",
+    "specialty": "Dentistry",
+    "description": "Tooth or oral health issues",
+    "experience": 15,
+    "location": "Chennai",
+    "hospital_name": "SmileBright Dental Studio",
+    "profile_summary": "Dr. Anjali Menon is a dentist with 15 years of experience in restorative and cosmetic dental care."
+  },
+  {
+    "name": "Dr. Ravi Iyer",
+    "specialty": "Pain Management",
+    "description": "Chronic or acute pain",
+    "experience": 19,
+    "location": "Chennai",
+    "hospital_name": "ReliefPlus Pain Clinic",
+    "profile_summary": "Dr. Ravi Iyer is a pain management consultant with 19 years of expertise in chronic pain rehabilitation."
+  },
+  {
+    "name": "Dr. Sanjay Rao",
+    "specialty": "ENT",
+    "description": "Ear, nose, or throat issues",
+    "experience": 13,
+    "location": "Chennai",
+    "hospital_name": "ClearTone ENT Hospital",
+    "profile_summary": "Dr. Sanjay Rao provides ENT care for sinus, hearing, and throat disorders with 13 years of experience."
+  }
+  ],
+    "keywords": ["doctor", "specialist", "medical expert", "location", "specialty", "experience"],
+    "created_at": "2025-10-19",
+    "priority": "high"
+  }
+
+]
