@@ -473,3 +473,29 @@ Please refer MediCure\Backend\Agents\QNA_Agent\kb_entries.json
 
 - Update Lex bot id, Lex bot alias id, Cognito Pool id in app.js.
 - Ensure API endpoint(Lambda Function URL) is correctly configured in app.js.
+
+
+## 📸 Project Screenshots
+
+To give a better understanding of MediCure's functionality and design, here are some visual highlights from the project or interactions within the MediCure chatbot experience:
+
+### 🤖 MediCure Chatbot Initial View
+![MediCure Chatbot Initial View](chatbot-initial-view.png)
+
+### 🧠 Specialist Matching View
+![Specialist Matching View](specialist-matching-view.png)
+
+### 📄 Medical Report Upload View
+![Medical Report Upload View](medical-report-upload-view.png)
+
+### 🕒 Appointment Confirmation View
+![Slot Confirmation View](slot-confirmation-view.png)
+
+### ❓ QnA View
+![QnA View](qna-view.png)
+
+### 📧 Appointment Confirmation Email View 1
+![Appointment Confirmation Email View 1](appointment-confirmation-email-view-1.png)
+
+### 📧 Appointment Confirmation Email View 2
+![Appointment Confirmation Email View 2](appointment-confirmation-email-view-2.png)
