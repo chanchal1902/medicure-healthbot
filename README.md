@@ -11,9 +11,9 @@
 - 🧠 **Clinical Insight Extraction**: Bedrock agents extract summaries from uploaded documents.
 - 🩺 **Specialist Matching**: Suggests doctors and appointment slots based on symptoms and location.
 - 📧 **Confirmation Email**: Sends structured appointment details via SES.
-- ❓ **FAQ Handling**: Routes general questions to a QnA agent powered by a Knowledge Base.
+- ❓ **FAQ Handling**: Routes general questions to a QnA agent powered by a Knowledge Base using RAG (Retrieval-Augmented Generation) for accurate, grounded responses.
 - 🤝 **Multi-Agent Collaboration**: Supervisor agent coordinates routing between specialized agents.
-
+- 🛡️ **Responsible AI**: Safety filters and fallback logic powered by Amazon Guardrails ensure ethical and secure AI interactions
 ---
 
 ## 🧠 Architecture Overview
@@ -66,6 +66,13 @@ MediCure/
 │   └── doctors_details_schema.json  # DynamoDB table schema for fetching doctor details by location and specialty
 ├── README.md
 ├── MediCure_Architecture.png        # Architecture diagram
+├── chatbot-initial-view.png         # MediCure Chatbot Initial View
+├── specialist-matching-view.png     # Specialist Matching View
+├── medical-report-upload-view.png   # Medical Report Upload View
+├── slot-confirmation-view.png       # Appointment Confirmation View
+├── qna-view.png                     # QnA View
+├── appointment-confirmation-email-view-1.png # Email view 1
+├── appointment-confirmation-email-view-2.png # Email view 2
 ```
 
 ## 🛠 Technologies Used
